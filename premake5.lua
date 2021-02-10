@@ -28,13 +28,14 @@ project "Engine"
 
 	includedirs
 	{
+		"%{prj.name}/src",
 		"%{prj.name}/vendor/spdlog/include"
 	}
 
 	filter "system:windows"
 		cppdialect "c++17"
 		staticruntime "on"
-		systemversion "10.0.17763.0"
+		systemversion "latest"
 
 		defines
 		{
@@ -81,7 +82,9 @@ project "Sandbox"
 	includedirs
 	{
 		"Engine/vendor/spdlog/include",
-		"Engine/src"
+		"Engine/src",
+		"Engine/src/Engine"
+		
 	}
 
 	links
@@ -95,7 +98,7 @@ project "Sandbox"
 		systemversion "latest"
 
 		defines
-		{
+		{	"EG_PLATFORM_WINDOWS",
 			"SAND_PLATFORM_WINDOWS"
 		}
 
