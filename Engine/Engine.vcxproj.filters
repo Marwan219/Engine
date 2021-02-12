@@ -9,6 +9,7 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\EGpch.h" />
     <ClInclude Include="src\Engine.h" />
     <ClInclude Include="src\Engine\Application.h">
       <Filter>Engine</Filter>
@@ -36,6 +37,7 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\EGpch.cpp" />
     <ClCompile Include="src\Engine\Application.cpp">
       <Filter>Engine</Filter>
     </ClCompile>
