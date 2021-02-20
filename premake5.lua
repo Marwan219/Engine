@@ -12,6 +12,14 @@ workspace "Engine"
 outputdir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
 	--Prekmake for the Engine project
 
+--include directories relative to root folder  (solution directory) 
+IncludeDir={}--this is a struct which is going to be a list of include directories that we have	we use
+--this is importnt because we want to have gflw directory in Engine , and the reason it is a struct becsuse iw
+--will grow to include each dependency 
+IncludeDir ["GLFW"]= "Engine/vendor/GLFW/include"
+
+include "Engine/vendor/GLFW"--this will include the premake file in the glfw in to here
+
 project "Engine"
 	location "Engine"
 	kind "sharedlib"
@@ -32,7 +40,15 @@ project "Engine"
 	includedirs
 	{
 		"%{prj.name}/src",
-		"%{prj.name}/vendor/spdlog/include"
+		--"%{prj.name}/src/Engine",
+		"%{prj.name}/vendor/spdlog/include",
+		"%{IncludeDir.GLFW}"
+	}
+
+	links
+	{
+		"GLFW",
+		"opengl32.lib"
 	}
 
 	filter "system:windows"
@@ -116,4 +132,3 @@ project "Sandbox"
 	filter "configurations:Dist"
 		defines "DIST"
 		optimize "On"
-		
