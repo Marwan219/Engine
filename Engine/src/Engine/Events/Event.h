@@ -17,7 +17,7 @@ namespace Engine {
 		None = 0,
 		WindowClose, WindowResize, WindowFocus, WindowLostFocus,WindowMoved, //the application events
 		AppTick, AppUpdate, AppRender ,  //the application events
-		KeyPressed, KeyReleased, //the Key events
+		KeyPressed, KeyReleased, KeyTyped ,//the Key events
 		MouseButtonPressed, MouseButtonReleased, MouseMoved, MouseScrolled  //the Mouse events
 	};
 
@@ -49,6 +49,8 @@ namespace Engine {
 		
 		
 	public:
+		bool Handled = false;
+
 		virtual EventType GetEventType() const = 0;
 		virtual const char* GetName() const = 0;
 		virtual int GetCategoryFlags() const = 0;

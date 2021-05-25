@@ -1,9 +1,8 @@
 #pragma once
 
-#include"Engine\Window.h"
+#include"Engine/Window.h"
 
-#include <GLFW\glfw3.h>
-
+#include <GLFW/glfw3.h>
 
 namespace Engine {
 
@@ -11,10 +10,7 @@ namespace Engine {
 	{
 	public:
 		WindowsWindow(const WindowProps& props);
-		virtual ~WindowsWindow()
-		{
-
-		}
+		virtual ~WindowsWindow();
 
 		void OnUpdate() override;
 
@@ -26,12 +22,13 @@ namespace Engine {
 		void SetVSync(bool enabled) override;
 		bool IsVSync() const override;
 
-		
+		virtual void* GetNativeWindow() const { return m_Window; }
 	private:
 		virtual void Init(const WindowProps& props);
 		virtual void Shutdown();
 	private:
 		GLFWwindow* m_Window;
+		
 
 		struct WindowData
 		{

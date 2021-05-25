@@ -1,6 +1,7 @@
 #pragma once
 
-#include"Events.h"
+#include"EGpch.h"
+#include"Engine\Events\Event.h"
 
 
 namespace Engine 
@@ -49,10 +50,29 @@ namespace Engine
 		std::string ToString() const override
 		{
 			std::stringstream ss;
-			ss << "KeyReleased Event: " << m_Keycode;
+			ss << "KeyReleased Event: " << m_KeyCode;
 			return ss.str();
 		}
 
 		EVENT_CLASS_TYPE(KeyReleased)
+	};
+
+
+	class ENGINE_API KeyTypedEvent : public KeyEvent
+	{
+	public:
+		KeyTypedEvent(int keycode)
+			: KeyEvent(keycode){}
+
+
+		std::string ToString() const override
+		{
+			std::stringstream ss;//this code willl prints which key is pressed and how many times it was prressed
+			ss << "KeyTypedEvent:" << m_KeyCode;
+			return ss.str();
+		}
+
+		EVENT_CLASS_TYPE(KeyTyped)
+
 	};
 }

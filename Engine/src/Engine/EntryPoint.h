@@ -10,8 +10,9 @@ extern Engine::Application* Engine::CreateApplication();
 int main(int argc , char** argv )
 {
 	Engine::Log::Init();
-	Engine::Log::GetCorelogger()->warn("inntialized log");
-	Engine::Log::GetClientlogger()->info("hi");
+	EG_CORE_WARN("inntialized log");
+	int a = 5;
+	EG_INFO("Hello var={0}",a);
 
 	//printf("My Game Engine\n");
 	auto app = Engine::CreateApplication();

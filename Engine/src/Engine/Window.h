@@ -1,7 +1,6 @@
 #pragma once
 
 #include"EGpch.h"
-#include <sstream>
 #include"Engine\Core.h"
 #include"Engine\Events\Event.h"
 
@@ -13,7 +12,7 @@ namespace Engine {
 		unsigned int Width;
 		unsigned int Height;
 
-		WindowProps(const std::string& title = " Engine",
+		WindowProps(const std::string& title = "Engine",
 					unsigned int width = 1280,
 					unsigned int height = 720)
 			: Title(title), Width(width), Height(height)
@@ -39,6 +38,8 @@ namespace Engine {
 		virtual void SetVSync(bool enabled) = 0;
 		virtual bool IsVSync() const = 0;
 
+		virtual void* GetNativeWindow() const = 0;//THIS WILL RETRUN THE GLFW WIndow nad it ois a void pointer because we dont have
+		//to use glfw window if we are usig window library
 
 		static Window* Create(const WindowProps& props = WindowProps());
 	};
