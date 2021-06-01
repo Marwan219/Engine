@@ -4,6 +4,8 @@
 
 #include <GLFW/glfw3.h>
 
+#include "Platform\OpenGl\OpenGlContext.h"
+
 namespace Engine {
 
 	class WindowsWindow : public Window
@@ -28,7 +30,7 @@ namespace Engine {
 		virtual void Shutdown();
 	private:
 		GLFWwindow* m_Window;
-		
+		GraphicsContext* m_Context;
 
 		struct WindowData
 		{

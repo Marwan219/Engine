@@ -16,9 +16,6 @@
     <Filter Include="src\Platform">
       <UniqueIdentifier>{21CA02E5-0D2D-9289-B6B2-CA3FA2F45D0C}</UniqueIdentifier>
     </Filter>
-    <Filter Include="src\Platform\OpenGl">
-      <UniqueIdentifier>{55A49437-C105-7245-4A73-B8F7B6D3A804}</UniqueIdentifier>
-    </Filter>
     <Filter Include="src\Platform\WIndows">
       <UniqueIdentifier>{3BF19F37-2780-2901-D09E-3DFCBC0C3AA7}</UniqueIdentifier>
     </Filter>
@@ -95,9 +92,6 @@
     </ClInclude>
     <ClInclude Include="src\Engine\Window.h">
       <Filter>src\Engine</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Platform\OpenGl\ImGuiOpenGLRenderer.h">
-      <Filter>src\Platform\OpenGl</Filter>
     </ClInclude>
     <ClInclude Include="src\Platform\WIndows\WindowsInput.h">
       <Filter>src\Platform\WIndows</Filter>
@@ -1350,6 +1344,18 @@
     <ClInclude Include="vendor\glm\glm\vector_relational.hpp">
       <Filter>vendor\glm\glm</Filter>
     </ClInclude>
+    <ClInclude Include="src\Engine\Renderer\GraphicsContext.h" />
+    <ClInclude Include="src\Platform\OpenGl\OpenGlContext.h" />
+    <ClInclude Include="src\Engine\Renderer\Shader.h" />
+    <ClInclude Include="src\Engine\Renderer\Renderer.h" />
+    <ClInclude Include="src\Engine\Renderer\Buffer.h" />
+    <ClInclude Include="src\Platform\OpenGl\OpenGlBuffer.h" />
+    <ClInclude Include="src\Engine\Renderer\VertexArray.h" />
+    <ClInclude Include="src\Platform\OpenGl\OpenGlVertexArray.h" />
+    <ClInclude Include="src\Engine\Renderer\RendererAPI.h" />
+    <ClInclude Include="src\Engine\Renderer\RenderCommand.h" />
+    <ClInclude Include="src\Platform\OpenGl\OpenGlRendererAPI.h" />
+    <ClInclude Include="src\Engine\Renderer\OrthorgraphicCamera.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\EGpch.cpp">
@@ -1357,6 +1363,9 @@
     </ClCompile>
     <ClCompile Include="src\Engine\Application.cpp">
       <Filter>src\Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Engine\ImGui\ImGuiBuild.cpp">
+      <Filter>src\Engine\ImGui</Filter>
     </ClCompile>
     <ClCompile Include="src\Engine\ImGui\LayerImGui.cpp">
       <Filter>src\Engine\ImGui</Filter>
@@ -1370,14 +1379,22 @@
     <ClCompile Include="src\Engine\Log.cpp">
       <Filter>src\Engine</Filter>
     </ClCompile>
-    <ClCompile Include="src\Platform\OpenGl\ImGuiOpenGLRenderer.cpp">
-      <Filter>src\Platform\OpenGl</Filter>
-    </ClCompile>
     <ClCompile Include="src\Platform\WIndows\WindowsWindow.cpp">
       <Filter>src\Platform\WIndows</Filter>
     </ClCompile>
     <ClCompile Include="src\Platform\WIndows\WinodwsInput.cpp">
       <Filter>src\Platform\WIndows</Filter>
     </ClCompile>
+    <ClCompile Include="src\Platform\OpenGl\OpenGContext.cpp" />
+    <ClCompile Include="src\Engine\Renderer\Shader.cpp" />
+    <ClCompile Include="src\Engine\Renderer\Renderer.cpp" />
+    <ClCompile Include="src\Engine\Renderer\Buffer.cpp" />
+    <ClCompile Include="src\Platform\OpenGl\OpenGlBuffer.cpp" />
+    <ClCompile Include="src\Engine\Renderer\VertexArray.cpp" />
+    <ClCompile Include="src\Platform\OpenGl\OpenGlVertexArray.cpp" />
+    <ClCompile Include="src\Engine\Renderer\RendererAPI.cpp" />
+    <ClCompile Include="src\Engine\Renderer\RenderCommand.cpp" />
+    <ClCompile Include="src\Platform\OpenGl\OpenGlRendererAPI.cpp" />
+    <ClCompile Include="src\Engine\Renderer\OrthorgraphicCamera.cpp" />
   </ItemGroup>
 </Project>

@@ -15,29 +15,15 @@ namespace Engine {
 		LayerImGui();
 		~LayerImGui();
 
-		void Attach();
-		void Detach();
-		void OnUpdate();
-		void OnEvent(Event& e);
-
-
-		//void Begin();
-		//void End();
-		//
-		//void BlockEvents(bool block) { m_BlockEvents = block; }
-		//
-		//void SetDarkThemeColors();
+		
 	
 
-	private:
-		bool OnMouseButtonPressedEvent(MouseButtonPressedEvent& e);
-		bool OnMouseButtonReleasedEvent(MouseButtonReleasedEvent& e);
-		bool OnMouseMovedEvent(MouseMovedEvent& e);
-		bool OnMouseButtonScrooledEvent(MouseScrolledEvent& e);
-		bool OnKeyPressedEvent(KeyPressedEvent& e);
-		bool OnKeyReleasedEvent(KeyReleasedEvent& e);
-		bool OnKeyTypedEvent(KeyTypedEvent& e);
-		bool OnWindowResizeEvent(WindowResizeEvent& e);
+		virtual void Attach() override;
+		virtual void Detach() override;
+		virtual void OnImGuiRender() override;
+
+		void Begin();
+		void End();
 
 	private:
 		//bool m_BlockEvents = true;

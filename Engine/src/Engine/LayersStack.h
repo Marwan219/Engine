@@ -23,7 +23,7 @@ namespace Engine {
 
 	private:
 		std::vector<Layers*> m_Layers;
-		std::vector<Layers*>::iterator m_LayerInsert;
+		unsigned int m_LayerInsertIndex = 0;
 
 	};
 }

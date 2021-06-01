@@ -1,4 +1,6 @@
 #include <Engine.h>
+#include "ImGui\imgui.h"
+#include"imgui\imgui.h"
 
 class TestLayer : public Engine::Layers
 {
@@ -13,6 +15,14 @@ public:
 		if (Engine::Input::IsKeyPressed(EG_KEY_TAB))
 			EG_TRACE("Tab key is pressed (poll)!");
 	}
+
+	virtual void OnImGuiRender() override
+	{
+		ImGui::Begin("Test");
+		ImGui::Text("Hello World");
+		ImGui::End();
+	}
+
 
 	void OnEvent(Engine::Event& event) override
 	{
@@ -34,7 +44,7 @@ public:
 	Sandbox()
 	{
 		pushLayer(new TestLayer());
-		pushOverlay(new Engine::LayerImGui());
+		//pushOverlay(new Engine::LayerImGui());
 	}
 
 	~Sandbox()

@@ -27,13 +27,12 @@ include "Engine/vendor/Glad"
 include "Engine/vendor/imgui"
 
 
-
-
 project "Engine"
 	location "Engine"
-	kind "sharedlib"
+	kind "StaticLib"
 	language "c++"
-	staticruntime "off"
+	cppdialect "C++17"
+	staticruntime "on"
 
 	targetdir ("bin/" .. outputdir .. "/%{prj.name}" )
 	objdir ("bin-int/" .. outputdir .. "/%{prj.name}" )
@@ -47,6 +46,12 @@ project "Engine"
 		"%{prj.name}/src/**.cpp",
 		"%{prj.name}/vendor/glm/glm/**.hpp",
 		"%{prj.name}/vendor/glm/glm/**.inl",
+	}
+
+
+	defines
+	{
+		"_CRT_SECURE_NO_WARNINGS"
 	}
 
 	includedirs
@@ -69,7 +74,6 @@ project "Engine"
 	}
 
 	filter "system:windows"
-		cppdialect "c++17"
 		systemversion "latest"
 
 		defines
@@ -79,12 +83,7 @@ project "Engine"
 			"GLFW_INCLUDE_NONE"
 		}
 
-		postbuildcommands
-		{
-			("{COPY} %{cfg.buildtarget.relpath} \"../bin/" .. outputdir .. "/Sandbox/\"")
-			--"{COPY} %{cfg.buildtarget.relpath} ..\\bin\\" .. outputdir .. "\\Sandbox"
-			--"{COPY} %{cfg.buildtarget.relpath} ../bin/" .. outputdir .. "/Sandbox"
-		}
+	
 
 	filter "configurations:Debug"
 		defines "EG_DEBUG"
@@ -109,7 +108,7 @@ project "Sandbox"
 	location "Sandbox"
 	kind "ConsoleApp"
 	language "C++"
-	staticruntime "off"
+	staticruntime "on"
 
 	targetdir ("bin/" .. outputdir .. "/%{prj.name}")
 	objdir ("bin-int/" .. outputdir .. "/%{prj.name}")
@@ -120,40 +119,49 @@ project "Sandbox"
 		"%{prj.name}/src/**.cpp"
 	}
 
+	defines
+	{
+		"_CRT_SECURE_NO_WARNINGS"
+	}
+
+
 	includedirs
 	{
 		"Engine/vendor/spdlog/include",
 		"Engine/src/Engine",
-		"Hazel/src",
+		"Engine/vendor",
+		"Engine/src",
 		"%{IncludeDir.glm}"
 		
 	}
 
 	links
-	{
+	{	
+		--"ImGui",
+		--"imgui",
 		"Engine"
 	}
 
 	filter "system:windows"
-		cppdialect "C++17"
 		systemversion "latest"
 
 		defines
-		{	"EG_PLATFORM_WINDOWS",
+		{
+			"EG_PLATFORM_WINDOWS",
 			"SAND_PLATFORM_WINDOWS"
 		}
 
 	filter "configurations:Debug"
 		defines "DEBUG"
 		runtime "Debug"
-		symbols "On"
+		symbols "on"
 
 	filter "configurations:Release"
 		defines "RELEASE"
 		runtime "Release"
-		optimize "On"
+		optimize "on"
 
 	filter "configurations:Dist"
 		defines "DIST"
 		runtime "Release"
-		--optimize "On"
+		optimize "on"
